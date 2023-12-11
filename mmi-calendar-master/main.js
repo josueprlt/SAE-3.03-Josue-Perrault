@@ -13,7 +13,7 @@ import { V } from "./js/view.js";
 
    Exception : Afficher 1, 2 ou les 3 années de formation sans autre filtrage peut être géré uniquement au niveau de la vue.
 */
-   
+
 
 // loadind data (and wait for it !)
 await M.init();
@@ -39,4 +39,28 @@ await M.init();
 ] */
 
 // creating events in the calendar
-V.uicalendar.createEvents( M.getEvents('mmi1') );
+V.uicalendar.createEvents(M.getEvents('mmi2'));
+
+
+
+
+let nav = document.querySelectorAll(".navigation");
+
+nav.forEach(elt => {
+  elt.addEventListener("click", handler__movePage);
+});
+
+
+
+function handler__movePage(ev) {
+
+  let btnId = ev.target.id;
+
+  if (btnId == "prev") {
+    V.uicalendar.prev();
+  } else if (btnId == "next") {
+    V.uicalendar.next();
+  } else if (btnId == "actual") {
+    V.uicalendar.today();
+  }
+}
