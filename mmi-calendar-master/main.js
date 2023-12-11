@@ -39,4 +39,4 @@ await M.init();
 ] */
 
 // creating events in the calendar
-V.uicalendar.createEvents( M.getEvents('mmi1') );
+V.uicalendar.createEvents( M.getEvents('mmi2') );
