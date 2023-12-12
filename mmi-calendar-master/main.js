@@ -41,18 +41,24 @@ await M.init();
 // creating events in the calendar
 V.uicalendar.createEvents(M.getEvents('mmi1'));
 
+V.uicalendar.setCalendarColor('mmi1', {
+  color: '#88AB8E',
+  backgroundColor: '#88AB8E',
+  borderColor: '#88AB8E',
+  dragBackgroundColor: '#88AB8E',
+});
+
+
 let select = document.querySelector("#group");
 
 select.addEventListener("change", handler__select);
 
 function handler__select() {
   let val = select.value;
-
+  
   V.uicalendar.clear();
   
-  if (val == "mmi1") {
-    V.uicalendar.createEvents(M.getEvents('mmi1'));
-  } else if (val == "mmi2") {
+  if (val == "mmi2") {
     V.uicalendar.createEvents(M.getEvents('mmi2'));
   } else if (val == "mmi3") {
     V.uicalendar.createEvents(M.getEvents('mmi3'));
@@ -60,8 +66,32 @@ function handler__select() {
     V.uicalendar.createEvents(M.getEvents('mmi1'));
     V.uicalendar.createEvents(M.getEvents('mmi2'));
     V.uicalendar.createEvents(M.getEvents('mmi3'));
+  } else {
+    
+    V.uicalendar.createEvents(M.getEvents('mmi1'));
   }
+
+  V.uicalendar.setCalendarColor('mmi1', {
+    color: '#88AB8E',
+    backgroundColor: '#88AB8E',
+    borderColor: '#88AB8E',
+    dragBackgroundColor: '#88AB8E',
+  });
+  V.uicalendar.setCalendarColor('mmi2', {
+    color: '#EEC759',
+    backgroundColor: '#EEC759',
+    borderColor: '#EEC759',
+    dragBackgroundColor: '#EEC759',
+  });
+  V.uicalendar.setCalendarColor('mmi3', {
+    color: '#8ACDD7',
+    backgroundColor: '#8ACDD7',
+    borderColor: '#8ACDD7',
+    dragBackgroundColor: '#8ACDD7',
+  });
 }
+
+
 
 
 
