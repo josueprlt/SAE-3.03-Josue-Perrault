@@ -18,35 +18,6 @@ import { V } from "./js/view.js";
 // loadind data (and wait for it !)
 await M.init();
 
-// sample events for testing
-/* let edt = [
-  {
-    id: '1',
-    calendarId: '1',
-    title: 'my event',
-    category: 'time',
-    start: '2023-12-11T08:30:00',
-    end: '2023-12-11T10:30:00',
-  },
-  {
-    id: '2',
-    calendarId: '1',
-    title: 'second event',
-    category: 'time',
-    start: '2023-12-13T14:00:00',
-    end: '2023-12-13T15:30:00',
-  },
-] */
-
-// creating events in the calendar
-V.uicalendar.createEvents(M.getEvents('mmi1'));
-
-V.uicalendar.setCalendarColor('mmi1', {
-  color: '#88AB8E',
-  backgroundColor: '#88AB8E',
-  borderColor: '#88AB8E',
-  dragBackgroundColor: '#88AB8E',
-});
 
 
 let select = document.querySelector("#group");
@@ -60,37 +31,92 @@ function handler__select() {
   
   if (val == "mmi2") {
     V.uicalendar.createEvents(M.getEvents('mmi2'));
+
   } else if (val == "mmi3") {
     V.uicalendar.createEvents(M.getEvents('mmi3'));
+
   } else if (val == "mmiAll") {
     V.uicalendar.createEvents(M.getEvents('mmi1'));
     V.uicalendar.createEvents(M.getEvents('mmi2'));
     V.uicalendar.createEvents(M.getEvents('mmi3'));
+
   } else {
     
     V.uicalendar.createEvents(M.getEvents('mmi1'));
   }
 
-  V.uicalendar.setCalendarColor('mmi1', {
-    color: '#88AB8E',
-    backgroundColor: '#88AB8E',
-    borderColor: '#88AB8E',
-    dragBackgroundColor: '#88AB8E',
-  });
-  V.uicalendar.setCalendarColor('mmi2', {
-    color: '#EEC759',
-    backgroundColor: '#EEC759',
-    borderColor: '#EEC759',
-    dragBackgroundColor: '#EEC759',
-  });
-  V.uicalendar.setCalendarColor('mmi3', {
-    color: '#8ACDD7',
-    backgroundColor: '#8ACDD7',
-    borderColor: '#8ACDD7',
-    dragBackgroundColor: '#8ACDD7',
-  });
+  /* ColorCalendar('mmi1', '#88AB8E');
+  ColorCalendar('mmi2', '#EEC759');
+  ColorCalendar('mmi3', '#8ACDD7'); */
+  let change = {};
+  
+  for (const elt of M.getEvents('mmi1')) {
+    
+    if (elt.title.includes("CM")) {
+      change.backgroundColor = '#88AB8E';
+      change.borderColor = '#88AB8E';
+    }
+    else if (elt.title.includes("TD")) {
+      change.backgroundColor = '#66826A';
+      change.borderColor = '#66826A';
+    }
+    else if (elt.title.includes("TP")) {
+      change.backgroundColor = '#38473A';
+      change.borderColor = '#38473A';
+    } else {
+      change.backgroundColor = '#88AB8E';
+      change.borderColor = '#88AB8E';
+    }
+  
+    V.uicalendar.updateEvent(elt.id, elt.calendarId, change);
+  }
+
+  for (const elt of M.getEvents('mmi2')) {
+    
+    if (elt.title.includes("CM")) {
+      change.backgroundColor = '#EEC759';
+      change.borderColor = '#EEC759';
+    }
+    else if (elt.title.includes("TD")) {
+      change.backgroundColor = '#A88C3F';
+      change.borderColor = '#A88C3F';
+    }
+    else if (elt.title.includes("TP")) {
+      change.backgroundColor = '#5A4B22';
+      change.borderColor = '#5A4B22';
+    } else {
+      change.backgroundColor = '#EEC759';
+      change.borderColor = '#EEC759';
+    }
+  
+    V.uicalendar.updateEvent(elt.id, elt.calendarId, change);
+  }
+
+  for (const elt of M.getEvents('mmi3')) {
+    
+    if (elt.title.includes("CM")) {
+      change.backgroundColor = '#8ACDD7';
+      change.borderColor = '#8ACDD7';
+    }
+    else if (elt.title.includes("TD")) {
+      change.backgroundColor = '#63939A';
+      change.borderColor = '#63939A';
+    }
+    else if (elt.title.includes("TP")) {
+      change.backgroundColor = '#3F5E63';
+      change.borderColor = '#3F5E63';
+    } else {
+      change.backgroundColor = '#8ACDD7';
+      change.borderColor = '#8ACDD7';
+    }
+  
+    V.uicalendar.updateEvent(elt.id, elt.calendarId, change);
+  }
 }
 
+
+
+handler__select();
 
 
 
