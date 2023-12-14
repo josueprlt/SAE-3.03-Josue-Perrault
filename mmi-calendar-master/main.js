@@ -49,9 +49,6 @@ MmiAll.forEach(el => {
   }
 });
 
-V.uicalendar.createEvents(Mmi1);
-V.uicalendar.createEvents(Mmi2);
-V.uicalendar.createEvents(Mmi3);
 
 
 
@@ -77,7 +74,6 @@ function handler__movePage(ev) {
     V.uicalendar.today();
   }
 }
-
 
 
 // ~~~~IT 4~~~~
@@ -108,6 +104,13 @@ function handler__check() {
   let mmi2Check = document.querySelector('#mmi2').checked;
   let mmi3Check = document.querySelector('#mmi3').checked;
 
+  V.uicalendar.clear();
+
+  V.uicalendar.createEvents(Mmi1);
+  V.uicalendar.createEvents(Mmi2);
+  V.uicalendar.createEvents(Mmi3);
+
+
   if (mmi1Check == true) {
     V.uicalendar.setCalendarVisibility(Mmi1[0].calendarId, true);
     group1.forEach(elt => {
@@ -120,13 +123,13 @@ function handler__check() {
       elt.style.display = "none";
     });
   }
-
+  
   if (mmi2Check == true) {
     V.uicalendar.setCalendarVisibility(Mmi2[0].calendarId, true);
     group2.forEach(elt => {
       elt.style.display = "";
     });
-
+    
   } else {
     V.uicalendar.setCalendarVisibility(Mmi2[0].calendarId, false);
     group2.forEach(elt => {
@@ -139,7 +142,7 @@ function handler__check() {
     group3.forEach(elt => {
       elt.style.display = "";
     });
-
+    
   } else {
     V.uicalendar.setCalendarVisibility(Mmi3[0].calendarId, false);
     group3.forEach(elt => {
@@ -147,8 +150,9 @@ function handler__check() {
     });
   }
 
-  setLocalStorage();
+  /* setLocalStorage(); */
 }
+
 
 
 // ~~~~IT 5~~~~
@@ -159,19 +163,19 @@ selectGroup.addEventListener("change", handler_Group);
 
 function handler_Group() {
   let val = selectGroup.value;
-
+  console.log(val);
+  
   V.uicalendar.clear();
-
+  
   if (val != "none") {
     let filter = MmiAll.filter((elt) => elt.groups.includes(val));
     V.uicalendar.createEvents(filter);
-
+    
   } else {
     V.uicalendar.createEvents(MmiAll);
   }
-
+  
 }
-
 
 
 
@@ -185,23 +189,22 @@ btn_search.addEventListener("click", handler__research);
 
 function handler__research() {
   V.uicalendar.clear();
-
+  
   let val = search_bar.value;
   let tableau = val.match(/(\d+|\D+)/g);
-  let filter;
-
+  let filterSearch;
+  
   if (val != "") {
-    filter = MmiAll.filter(elt =>
+    filterSearch = MmiAll.filter(elt =>
       tableau.every(tab => elt.location.includes(tab) || elt.title.includes(tab))
     );
   } else {
     V.uicalendar.createEvents(MmiAll);
   }
-
-
-  V.uicalendar.createEvents(filter);
+  
+  
+  V.uicalendar.createEvents(filterSearch);
 }
-
 
 
 // ~~~~IT 8~~~~
@@ -256,30 +259,42 @@ function setLocalStorage() {
   let cb1 = document.querySelector('#mmi1').checked;
   let cb2 = document.querySelector('#mmi2').checked;
   let cb3 = document.querySelector('#mmi3').checked;
+  let valeur = selectGroup.value;
 
   localStorage.setItem("cb1", cb1);
   localStorage.setItem("cb2", cb2);
   localStorage.setItem("cb3", cb3);
+
+  localStorage.setItem("group", valeur);
 }
 
 
 let checkbox1 = localStorage.getItem("cb1");
 let checkbox2 = localStorage.getItem("cb2");
 let checkbox3 = localStorage.getItem("cb3");
+let group = localStorage.getItem("group");
 
 
 function getLocalStorage() {
+  let cb1 = document.querySelector('#mmi1');
+  let cb2 = document.querySelector('#mmi2');
+  let cb3 = document.querySelector('#mmi3');
+  
+  document.querySelector('#group [value="' + group + '"]').selected = true;
   
   V.uicalendar.clear();
   
-  if (checkbox1 == "true") {  
+  if (checkbox1 == "true") {
     V.uicalendar.createEvents(Mmi1);
+    cb1.click();
   }
   if (checkbox2 == "true") {
     V.uicalendar.createEvents(Mmi2);
+    cb2.click();
   }
   if (checkbox3 == "true") {
     V.uicalendar.createEvents(Mmi3);
+    cb3.click();
   }
 }
 

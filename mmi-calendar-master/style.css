@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column-reverse;
     gap: 2rem;
     padding: 0;
     margin: 2rem 0;
@@ -11,5 +12,42 @@
     background: none;
     border: none;
     font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.section_groupe {
+    width: 100%;
+    padding: 0 50rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.section__une,
+.section__deux {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.section__btns {
+    display: flex;
+    justify-content: end;
+    gap: 1rem;
+}
+
+.sections_nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn__calendar {
+    position: relative;
+    padding: .25rem 1rem;
+    border-radius: 2rem;
+    color: aliceblue;
+    background: rgb(16,193,211);
+    background: linear-gradient(90deg, rgba(16,193,211,1) 61%, rgba(3,197,202,1) 100%);
     cursor: pointer;
 }
