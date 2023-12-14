@@ -278,9 +278,7 @@ function getLocalStorage() {
   let cb3 = document.querySelector('#mmi3');
 
   document.querySelector('#group [value="' + group + '"]').selected = true;
-  
-  console.log(group);
-  
+
   if (group != "none") {
     V.uicalendar.clear();
     let filter = MmiAll.filter((elt) => elt.groups.includes(group));
@@ -290,17 +288,25 @@ function getLocalStorage() {
   if (checkbox1 == "true") {
     V.uicalendar.setCalendarVisibility(Mmi1[0].calendarId, true);
     cb1.click();
+  } else {
+    V.uicalendar.setCalendarVisibility(Mmi1[0].calendarId, false);
   }
 
   if (checkbox2 == "true") {
     V.uicalendar.setCalendarVisibility(Mmi2[0].calendarId, true);
     cb2.click();
+  } else {
+    V.uicalendar.setCalendarVisibility(Mmi2[0].calendarId, false);
   }
 
   if (checkbox3 == "true") {
     V.uicalendar.setCalendarVisibility(Mmi3[0].calendarId, true);
     cb3.click();
+  } else {
+    V.uicalendar.setCalendarVisibility(Mmi3[0].calendarId, false);
   }
+
+
 
 }
 
