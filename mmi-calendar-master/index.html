@@ -1,23 +1,87 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MMI Calendar</title>
-  </head>
-  <body>
-  
-    <div>
-      <header>
-        <nav>
-         
-        </nav>
-      </header>
 
-      <main id="calendar" style="height: 800px"></main>
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+  <title>MMI Calendar</title>
+</head>
 
-    <script type="module" src="/main.js"></script>
-    
-  </body>
+<body>
+
+  <div class="div__content">
+    <header>
+      <nav class="navigation">
+        <section class="sections_nav">
+          <button class="btn__calendar" id="prev"><img id="prev"
+              src="assets/IconArrowLeft.svg" alt="icon arrow left"></button>
+          <button class="btn__calendar" id="actual"><img id="actual"
+              src="assets/IconToday.svg" alt="today"></button>
+          <button class="btn__calendar" id="next"><img id="next"
+              src="assets/IconArrowRight.svg" alt="icon arrow right"></button>
+        </section>
+
+        <section class="section__une">
+
+          <div class="div__checkbox">
+
+            <label class="container">MMI 1
+              <input class="checkmmi" type="checkbox" name="mmi1" id="mmi1">
+              <span class="checkmark"></span>
+            </label>
+
+            <label class="container">MMI 2
+              <input class="checkmmi" type="checkbox" name="mmi2" id="mmi2">
+              <span class="checkmark"></span>
+            </label>
+
+            <label class="container">MMI 3
+              <input class="checkmmi" type="checkbox" name="mmi3" id="mmi3">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+
+          <select class="custom-select" name="group" id="group">
+
+            <option value="none">aucun filtre</option>
+            <option class="but1" value="BUT1-G1">BUT1-G1</option>
+            <option class="but1" value="BUT1-G21">BUT1-G21</option>
+            <option class="but1" value="BUT1-G22">BUT1-G22</option>
+            <option class="but1" value="BUT1-G3">BUT1-G3</option>
+
+            <option class="but2" value="BUT2-G1">BUT2-G1</option>
+            <option class="but2" value="BUT2-G21">BUT2-G21</option>
+            <option class="but2" value="BUT2-G22">BUT2-G22</option>
+            <option class="but2" value="BUT2-G3">BUT2-G3</option>
+
+            <option class="but3" value="BUT3-G1">BUT3-G1</option>
+            <option class="but3" value="BUT3-G21">BUT3-G21</option>
+            <option class="but3" value="BUT3-G22">BUT3-G22</option>
+            <option class="but3" value="BUT3-G3">BUT3-G3</option>
+          </select>
+        </section>
+
+        <section class="section__deux">
+          <section class="section__research">
+            <input class="input__research" type="text" name="search" id="search" placeholder="Un professeur, une salle...">
+            <button id="btn__search">Valider</button>
+          </section>
+
+          <section class="section__btns">
+            <button class="btn__calendar visual" data-id="jour">Jour</button>
+            <button class="btn__calendar visual" data-id="semaine">Semaine</button>
+            <button class="btn__calendar visual" data-id="mois">Mois</button>
+          </section>
+        </section>
+      </nav>
+    </header>
+
+    <main id="calendar" style="height: 100vh"></main>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+
+</body>
+
 </html>
