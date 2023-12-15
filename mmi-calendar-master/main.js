@@ -311,3 +311,32 @@ function getLocalStorage() {
 }
 
 getLocalStorage();
+
+
+
+// ~~~~IT 11~~~~
+
+V.uicalendar.setTheme({
+  common: {
+    backgroundColor: '#f0f8ff'
+  },
+  week: {
+    today: {
+      color: '#0583D2',
+    },
+  }
+});
+
+
+// ~~~~Modal version mobile~~~~
+
+let btnNav = document.querySelector(".btn__navigation");
+let navi = document.querySelector(".navigation");
+
+btnNav.addEventListener("click", handler__navigation);
+
+function handler__navigation() {
+  navi.classList.toggle("active");
+}
+
+
